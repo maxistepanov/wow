@@ -37,6 +37,14 @@ class HomeController extends Controller
         );
 
         $videoList = Youtube::searchAdvanced($params, true);
+        $videoF = array_pop($videoList['results']);
+        $id_video = $videoF->id->videoId;
+        $video = Youtube::getVideoInfo($id_video);
+        dd($video);
+        if (isset($videoList['info']['nextPageToken'])) {
+            $params['pageToken'] = $videoList['info']['nextPageToken'];
+        }
+
 //        dd($videoList);
         return view('home', ['data' => $videoList]);
     }
