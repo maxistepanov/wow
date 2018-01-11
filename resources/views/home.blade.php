@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    WOW HOW
+                        @foreach ($data as $video)
+                            {!!  $video->player->embedHtml !!}</p>
+                        @endforeach
+
                 </div>
             </div>
         </div>

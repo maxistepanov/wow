@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use Alaouy\Youtube\Facades\Youtube;
+//use Alaouy\Youtube\Youtube;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $channel = 'UCuPfUet3Sypl_hz8vDDN4Kw';
+
+
+        $params = array(
+            'type' => 'video',
+            'channelId' => $channel,
+            'part' => implode(', ', ['id', 'snippet']),
+            'maxResults' => 10,
+        );
+
+        $videoList = Youtube::searchAdvanced($params, true);
+//        dd($videoList);
+        return view('home', ['data' => $videoList]);
     }
 }
