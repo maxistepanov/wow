@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alaouy\Youtube\Facades\Youtube;
 use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,10 @@ class ChartController extends Controller
             ->dimensions(1000,500)
             ->responsive(false);
 
+        $list = Youtube::getPlaylistsByChannelId(env('WOW_HOW_CHANNEL'), ['maxResults' => 15]);
+//        $playList = Youtube::getPlaylistItemsByPlaylistId('PL6vb-TccfA0VqTUMFKvLFUP1bSH9nkzno');
+//        dd($playList);
+        dd($list);
 
 
         return view('chart', ['chart' => $secondChart]);
