@@ -15,9 +15,7 @@
                     @endif
 
                     WOW HOW
-                        @foreach ($data as $video)
-                            {!!  $video->player->embedHtml !!}</p>
-                        @endforeach
+
 
                 </div>
             </div>
