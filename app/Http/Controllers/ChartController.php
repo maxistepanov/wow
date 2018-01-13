@@ -27,6 +27,15 @@ class ChartController extends Controller
             // Setup what the values mean
             ->labels(['One', 'Two', 'Three']);
 
-        return view('chart', ['chart' => $chart]);
+        $secondChart = Charts::create('donut', 'highcharts')
+            ->title('My nice chart')
+            ->labels(['First', 'Second', 'Third'])
+            ->values([5,10,20])
+            ->dimensions(1000,500)
+            ->responsive(false);
+
+
+
+        return view('chart', ['chart' => $secondChart]);
     }
 }
