@@ -21,10 +21,14 @@
     <!-- Main Application (Can be VueJS or other JS framework) -->
     <div class="app">
         <center>
-            {!! $chart->html() !!}
+            @foreach($charts as $chart)
+                {!! $chart->html() !!}
+            @endforeach
         </center>
     </div>
     <!-- End Of Main Application -->
     {!! Charts::scripts() !!}
-    {!! $chart->script() !!}
+    @foreach($charts as $chart)
+        {!! $chart->script() !!}
+    @endforeach
 @endsection
