@@ -12,19 +12,23 @@
 </head>
 <body>
 
-</body>
-</html>
+
 
 @extends('layouts.app')
 
 @section('content')
     <!-- Main Application (Can be VueJS or other JS framework) -->
     <div class="app">
-        <center>
+        <div class="container">
             @foreach($charts as $chart)
-                {!! $chart->html() !!}
+                <div class="row">
+                    {!! $chart->html() !!}
+                </div>
+                <hr>
             @endforeach
-        </center>
+                <hr>
+        </div>
+
     </div>
     <!-- End Of Main Application -->
     {!! Charts::scripts() !!}
@@ -32,3 +36,6 @@
         {!! $chart->script() !!}
     @endforeach
 @endsection
+
+</body>
+</html>
